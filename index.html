@@ -6,17 +6,28 @@
   <title>Pedro Bala</title>
   <style>
     body {
-      background-color: #F5F5F5;
+      background-image: url('safari.jpg');
       font-family: Arial, sans-serif;
+      overflow: hidden; /* Impede a rolagem vertical */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh; /* Definindo a altura do corpo como 100% da altura da janela do navegador */
     }
 
     .container {
       max-width: 600px;
-      margin: 0 auto;
+      margin: auto; /* Isso irá centralizar horizontalmente */
       padding: 20px;
       background-color: #FFFFFF;
       border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+      position: relative; /* Define o contexto para os elementos filhos absolutamente posicionados */
+      background: transparent;
+      display: flex; /* Ativa o modelo de layout Flexbox */
+      flex-direction: column; /* Empilha os elementos verticalmente */
+      justify-content: center; /* Centraliza os elementos verticalmente */
+      height: 100vh; /* Definindo a altura do corpo como 100% da altura da janela do navegador */
     }
 
     .title {
@@ -44,18 +55,16 @@
       font-size: 18px;
       border-radius: 5px;
       text-decoration: none;
+      position: relative;
+      z-index: 1; /* Garante que o botão esteja acima dos balões */
     }
 
     /* Safari background */
-    body {
-      background-image: url('safari_background.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
 
     .image {
       text-align: center;
       margin-bottom: 20px;
+      position: relative;
     }
 
     .image img {
@@ -63,6 +72,63 @@
       height: auto;
       border-radius: 50%;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      animation: bounce 2s infinite alternate; /* Adiciona animação de quicar */
+    }
+
+    @keyframes bounce {
+      from {
+        transform: translateY(-10px);
+      }
+      to {
+        transform: translateY(10px);
+      }
+    }
+
+    .balloon {
+      position: absolute;
+      width: 60px;
+      top: -60px;
+      left: calc(50% - 30px);
+      animation: float 4s infinite alternate;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-20px);
+      }
+    }
+
+    .burst {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: url('burst.png') no-repeat center center;
+      animation: burst 0.5s steps(7) forwards;
+    }
+
+    @keyframes burst {
+      100% {
+        background-position: -700px 0;
+      }
+    }
+
+    .burst {
+      /* Posiciona os balões com base na largura e altura da janela do navegador */
+      top: 15vh; /* 15% da altura da janela */
+      left: 30vw; /* 30% da largura da janela */
+    }
+
+    .burst:nth-child(2) {
+      top: 20vh; /* 20% da altura da janela */
+      left: 50vw; /* 50% da largura da janela */
+    }
+
+    .burst:nth-child(3) {
+      top: 25vh; /* 25% da altura da janela */
+      left: 70vw; /* 70% da largura da janela */
     }
   </style>
 </head>
@@ -76,6 +142,16 @@
       <embed class="pdf-viewer" src="SAFARI DO PEDRO.pdf" type="application/pdf">
     </div>
     <a class="button" href="SAFARI DO PEDRO.pdf" id="downloadLink">Ver Convite</a>
+
+    <!-- Balões decorativos -->
+    <div class="balloon" style="background-color: #FFC0CB;"></div>
+    <div class="balloon" style="background-color: #87CEEB; left: 20%;"></div>
+    <div class="balloon" style="background-color: #FFD700; left: 70%;"></div>
+
+    <!-- Efeito de balão estourando -->
+    <div class="burst" style="top: 15vh; left: 30vw;"></div>
+    <div class="burst" style="top: 20vh; left: 50vw;"></div>
+    <div class="burst" style="top: 25vh; left: 70vw;"></div>
 
     <script>
       // Adiciona um evento de clique ao botão
