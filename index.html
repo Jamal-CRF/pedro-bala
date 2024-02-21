@@ -30,9 +30,7 @@
     }
 
     .pdf-viewer {
-      width: 100%;
-      height: 600px;
-      margin-bottom: 20px;
+      display: none; /* Oculta o visualizador de PDF */
     }
 
     .button {
@@ -59,8 +57,36 @@
 <body>
   <div class="container">
     <h1 class="title" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Aniversário do Pedro Bala</h1>
-    <embed class="pdf-viewer" src="SAFARI DO PEDRO.pdf" type="application/pdf">
-    <a class="button" href="SAFARI DO PEDRO.pdf" download>Ver Convite</a>
+    <div class="pdf-container">
+      <embed class="pdf-viewer" src="SAFARI DO PEDRO.pdf" type="application/pdf">
+    </div>
+    <a class="button" href="SAFARI DO PEDRO.pdf" id="downloadLink">Ver Convite</a>
+
+    <script>
+      // Adiciona um evento de clique ao botão
+      document.getElementById('downloadLink').addEventListener('click', function(event) {
+        // Impede o comportamento padrão do link (navegar para o PDF)
+        event.preventDefault();
+
+        // Obtém o link do PDF
+        var pdfLink = this.getAttribute('href');
+
+        // Cria um elemento de link temporário para iniciar o download do PDF
+        var tempLink = document.createElement('a');
+        tempLink.style.display = 'none';
+        tempLink.href = pdfLink;
+        tempLink.setAttribute('download', 'SAFARI DO PEDRO.pdf');
+        
+        // Adiciona o link temporário ao corpo do documento
+        document.body.appendChild(tempLink);
+
+        // Aciona o clique no link temporário para iniciar o download do PDF
+        tempLink.click();
+
+        // Remove o link temporário do corpo do documento após o download
+        document.body.removeChild(tempLink);
+      });
+    </script>
   </div>
 </body>
 </html>
