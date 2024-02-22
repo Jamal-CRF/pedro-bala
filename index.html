@@ -1,147 +1,149 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pedro Bala</title>
-  <style>
-    body {
-      background-image: url('safari.jpg');
-      font-family: Arial, sans-serif;
-      overflow: hidden; /* Impede a rolagem vertical */
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      height: 100vh; /* Definindo a altura do corpo como 100% da altura da janela do navegador */
-    }
-
-    .container {
-      max-width: 600px;
-      margin: auto; /* Isso irá centralizar horizontalmente */
-      padding: 20px;
-      background-color: #FFFFFF;
-      border-radius: 10px;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-      position: relative; /* Define o contexto para os elementos filhos absolutamente posicionados */
-      background: transparent;
-      display: flex; /* Ativa o modelo de layout Flexbox */
-      flex-direction: column; /* Empilha os elementos verticalmente */
-      justify-content: center; /* Centraliza os elementos verticalmente */
-      height: 100vh; /* Definindo a altura do corpo como 100% da altura da janela do navegador */
-    }
-
-    .title {
-      text-align: center;
-      font-size: 37px;
-      margin-bottom: 20px;
-      color: #FF9800;
-      text-shadow: 0.3px 0.3px 0.3px rgba(42, 41, 41, 0.756);
-      font-family: 'Osesek Font', cursive, sans-serif;
-      font-weight: 900;
-    }
-
-    .pdf-viewer {
-      display: none; /* Oculta o visualizador de PDF */
-    }
-
-    .button {
-      display: block;
-      width: 200px;
-      margin: 0 auto;
-      padding: 10px;
-      text-align: center;
-      background-color: #FF9800;
-      color: #FFFFFF;
-      font-size: 18px;
-      border-radius: 5px;
-      text-decoration: none;
-      position: relative;
-      z-index: 1; /* Garante que o botão esteja acima dos balões */
-    }
-
-    /* Safari background */
-
-    .image {
-      text-align: center;
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .image img {
-      width: 200px;
-      height: auto;
-      border-radius: 50%;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      animation: bounce 2s infinite alternate; /* Adiciona animação de quicar */
-    }
-
-    @keyframes bounce {
-      from {
-        transform: translateY(-10px);
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Bala</title>
+    <style>
+      body {
+        background-image: url('bday 1 ano Pedro.png');
+        font-family: Arial, sans-serif;
+        overflow: hidden; /* Impede a rolagem vertical */
+        background-size: 95%; /* Reduce the background image by 10% */
+        background-repeat: no-repeat;
+        background-position: center top 10px; /* Position the background image 10px from the top */
+        height: 100vh; /* Definindo a altura do corpo como 100% da altura da janela do navegador */
+        background-color: #fffaeb;
       }
-      to {
-        transform: translateY(10px);
+  
+      .container {
+        max-width: 600px;
+        margin: auto; /* Isso irá centralizar horizontalmente */
+        padding: 20px;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        position: relative; /* Define o contexto para os elementos filhos absolutamente posicionados */
+        background: transparent;
+        display: flex; /* Ativa o modelo de layout Flexbox */
+        flex-direction: column; /* Empilha os elementos verticalmente */
+        justify-content: center; /* Centraliza os elementos verticalmente */
+        height: 100vh; /* Definindo a altura do corpo como 100% da altura da janela do navegador */
       }
-    }
 
-    .balloon {
-      position: absolute;
-      width: 60px;
-      top: -60px;
-      left: calc(50% - 30px);
-      animation: float 4s infinite alternate;
-    }
-
-    @keyframes float {
-      from {
-        transform: translateY(0);
+      @media (max-width: 600px) {
+        .container {
+          /* justify-content: flex-end;
+          margin-top: 25px; */
+          display: block; /* Remove the display flex property */
+          margin-top: 150px;
+          
+        }
       }
-      to {
-        transform: translateY(-20px);
+  
+      .pdf-viewer {
+        display: none; /* Oculta o visualizador de PDF */
       }
-    }
-
-    .burst {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background: url('burst.png') no-repeat center center;
-      animation: burst 0.5s steps(7) forwards;
-    }
-
-    @keyframes burst {
-      100% {
-        background-position: -700px 0;
+  
+      .button {
+        display: block;
+        width: 200px;
+        margin: 10px auto 0; /* Ajusta o posicionamento do botão */
+        padding: 10px;
+        text-align: center;
+        background-color: rgba(255, 152, 0, 0.8); /* Use rgba to set the background color with opacity */
+        color: #FFFFFF;
+        font-size: 19px;
+        border-radius: 5px;
+        text-decoration: none;
+        position: relative;
+        z-index: 1; /* Garante que o botão esteja acima dos balões */
+        font-weight: bold; /* Adiciona negrito ao texto do botão */
       }
-    }
-
-    .burst {
-      /* Posiciona os balões com base na largura e altura da janela do navegador */
-      top: 15vh; /* 15% da altura da janela */
-      left: 30vw; /* 30% da largura da janela */
-    }
-
-    .burst:nth-child(2) {
-      top: 20vh; /* 20% da altura da janela */
-      left: 50vw; /* 50% da largura da janela */
-    }
-
-    .burst:nth-child(3) {
-      top: 25vh; /* 25% da altura da janela */
-      left: 70vw; /* 70% da largura da janela */
-    }
-  </style>
-</head>
+  
+      /* Safari background */
+  
+      .image {
+        text-align: center;
+        margin-bottom: 10px;
+        position: relative;
+        margin-top: 20px; /* Ajusta o posicionamento da imagem */
+      }
+  
+      .image img {
+        width: 200px;
+        height: auto;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        animation: bounce 2s infinite alternate; /* Adiciona animação de quicar */
+      }  
+  
+      @keyframes bounce {
+        from {
+          transform: translateY(-10px);
+        }
+        to {
+          transform: translateY(10px);
+        }
+      }
+  
+      .balloon {
+        position: absolute;
+        width: 60px;
+        top: -60px;
+        left: calc(50% - 30px);
+        animation: float 4s infinite alternate;
+      }
+  
+      @keyframes float {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-20px);
+        }
+      }
+  
+      .burst {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: url('burst.png') no-repeat center center;
+        animation: burst 0.5s steps(7) forwards;
+      }
+  
+      @keyframes burst {
+        100% {
+          background-position: -700px 0;
+        }
+      }
+  
+      .burst {
+        /* Posiciona os balões com base na largura e altura da janela do navegador */
+        top: 15vh; /* 15% da altura da janela */
+        left: 30vw; /* 30% da largura da janela */
+      }
+  
+      .burst:nth-child(2) {
+        top: 20vh; /* 20% da altura da janela */
+        left: 50vw; /* 50% da largura da janela */
+      }
+  
+      .burst:nth-child(3) {
+        top: 25vh; /* 25% da altura da janela */
+        left: 70vw; /* 70% da largura da janela */
+      }
+    </style>
+  </head>
 <body>
   <div class="container">
-    <h1 class="title" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Aniversário do Pedro Bala</h1>
     <div class="image">
       <img src="pedro-bala.png" alt="Pedro Bala">
     </div>
     <div class="pdf-container">
-      <embed class="pdf-viewer" src="SAFARI DO PEDRO.pdf" type="application/pdf">
+      <embed class="pdf-viewer" src="bday 1 ano Pedro.pdf" type="application/pdf">
     </div>
-    <a class="button" href="SAFARI DO PEDRO.pdf" id="downloadLink">Ver Convite</a>
+    <a class="button" href="bday 1 ano Pedro.pdf" id="downloadLink">Acessar o Convite</a>
 
     <!-- Balões decorativos -->
     <div class="balloon" style="background-color: #FFC0CB;"></div>
@@ -166,7 +168,7 @@
         var tempLink = document.createElement('a');
         tempLink.style.display = 'none';
         tempLink.href = pdfLink;
-        tempLink.setAttribute('download', 'SAFARI DO PEDRO.pdf');
+        tempLink.setAttribute('download', 'bday 1 ano Pedro.pdf');
         
         // Adiciona o link temporário ao corpo do documento
         document.body.appendChild(tempLink);
